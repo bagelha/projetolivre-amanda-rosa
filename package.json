@@ -1,0 +1,28 @@
+{
+  "name": "projetolivre-amanda-rosa",
+  "version": "1.0.0",
+  "description": "Projeto CRUD {reprograma} + integração MongoDB",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bagelha/projetolivre-amanda-rosa.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bagelha/projetolivre-amanda-rosa/issues"
+  },
+  "homepage": "https://github.com/bagelha/projetolivre-amanda-rosa#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.15",
+    "nodemon": "^2.0.7"
+  }
+}
