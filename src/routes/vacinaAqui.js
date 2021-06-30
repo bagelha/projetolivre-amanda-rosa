@@ -10,4 +10,7 @@ router.post("/", controller.create)
 router.get("/", controller.getAll)
 router.get("/bairro", controller.getBairro)
 
+// delete
+router.delete("/:id", controller.deleteLocal)
+
 module.exports = router

@@ -10,7 +10,7 @@
 const mongoose= require ("mongoose")
 const Vacina = require("../models/vacinaModels")
 
-// criar local: get ==> save()
+// criar local ==> save()
 
 const create = async (request, response)=>{
     let local= new Vacina({
@@ -40,7 +40,7 @@ const create = async (request, response)=>{
 }
 
 
-// get ==> find()
+// buscar ==> find()
 const getAll = async(request, response)=>{
     const locais = await Vacina.find()
     return response.status(200).json([{
@@ -49,32 +49,48 @@ const getAll = async(request, response)=>{
     }])
 }
 
-// // ver depois
-// const getBairro = async (request, response)=>{
-//     const bairroRequisitado = request.query.bairro
-//     let novaLista = await []
+// ver depois
+const getBairro = async (request, response)=>{
+    const encontraBairro = await Vacina.find({})
+    
+    const bairroMap = {}
+    
+    encontraBairro.forEach((bairroVacina)=>{
+        bairroMap[bairroVacina.bairro] = bairroVacina
+    })
+
+    response.send(200).json(bairroMap)
    
-//     await Vacina.find(bairroV =>{
-//         let bairroLista = bairroV.bairro.split(",") 
-//         for(item of bairroLista){
-//             if(item.includes(bairroRequisitado) && bairroV.bairro.includes(item)){
-//                 console.log(bairroV)
-//                 novaLista.push(bairroV)
-//             }
-//         }
-//     })
-
-//     response.status(200).send(novaLista)
-// }
+}
 
 
+// deletar ==> remove()
+const deleteLocal = async (request, response)=>{
+    const encontraLocal = await Vacina.findById(request.params.id)
 
+    if(encontraLocal == null){
+        response.status(404).json({message: "Unidade não encontrada"})
+    }
+
+    try{
+        await encontraLocal.remove()
+        response.status(200).json([{
+            message: "Remoção realizada com sucesso",
+            encontraLocal
+        }])
+    }catch(err){
+        response.status(500).json({message: err.message})
+    }
+}
+
+// update
 
 
 module.exports = {
     create, 
     getAll,
-    getBairro
+    getBairro,
+    deleteLocal
 }
 
 
