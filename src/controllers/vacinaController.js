@@ -49,7 +49,7 @@ const getAll = async(request, response)=>{
     }])
 }
 
-// ver depois
+
 const getBairro = async (request, response)=>{
     const encontraBairro = await Vacina.find({})
     
