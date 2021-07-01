@@ -51,15 +51,8 @@ const getAll = async(request, response)=>{
 
 
 const getBairro = async (request, response)=>{
-    const encontraBairro = await Vacina.find(request.query.bairro)
-    
-    const bairroMap = {}
-    
-    encontraBairro.forEach((bairroVacina)=>{
-        bairroMap[bairroVacina.bairro] = bairroVacina
-    })
-
-    response.send(200).json(bairroMap)
+    const encontraBairro = await Vacina.find(request.query)
+    response.send(200).json(encontraBairro)
    
 }
 
@@ -122,39 +115,7 @@ const atualizaLocal = async(request, response)=>{
 
 }
 
-// substituir ==> save()
-const substituiLocal = async (request,response)=>{
-    const encontraLocal = await Vacina.findById(request.params.id)
-    
-    if(encontraLocal == null){
-        response.status(404).json({message: "Unidade não encontrada"})
-    }
-    
 
-    const localSubstituto = new {
-        _id: encontraLocal.id,
-        nome: request.body.nome,
-        bairro: request.body.bairro,
-        endereco: request.body.endereco,
-        telefone: request.body.telefone,
-        qtdInsumo: request.body.qtdInsumo,
-        dtCriacao: request.body.dtCriacao 
-    }
-
-    const indice = local.indexOf(encontraLocal)
-    Vacinas.splice(indice,1,localSubstituto)
-
-    // banco de dados
-    try{
-        await encontraLocal.save()
-        response.status(200).json([{
-            message: "Local substituído com sucesso"
-        }])
-    }catch(err){
-        response.status(500).json({messagem: err.message})
-    }
-    
-}
 
 
 
@@ -163,8 +124,7 @@ module.exports = {
     getAll,
     getBairro,
     deleteLocal,
-    atualizaLocal,
-    substituiLocal
+    atualizaLocal
 }
 
 

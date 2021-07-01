@@ -8,15 +8,13 @@ router.post("/", controller.create)
 
 // get
 router.get("/", controller.getAll)
-router.get("/bairro", controller.getBairro)
+router.get("/bairros", controller.getBairro)
 
 // delete
 router.delete("/:id", controller.deleteLocal)
 
-// patch
-router.patch("/:id", controller.atualizaLocal)
-
 // put
-router.put("/:id", controller.substituiLocal)
+router.put("/:id", controller.atualizaLocal)
+
 
 module.exports = router
