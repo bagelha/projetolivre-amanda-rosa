@@ -109,7 +109,10 @@ const atualizaLocal = async(request, response)=>{
     // banco de dados
     try{
         const atualizaLocal = await encontraLocal.save()
-        response.status(200).json(atualizaLocal)
+        response.status(200).json([{
+            message: "Dado atualizado com sucesso",
+            atualizaLocal
+        }])
     }catch(err){
         response.status(500).json({messagem: err.message})
     }

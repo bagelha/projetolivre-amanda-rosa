@@ -25,7 +25,8 @@ O **vacinaAqui!** é proposição de um sistema de gestão de estoque ***fictíc
 | `npm` | Gerenciador de pacotes|
 | `MongoDb` | Banco de dado não relacional orietado a documentos|
 | `MongoDb Atlas` | Interface da cloud para verificar se os dados foram persistidos|
- `Insomnia` | Interface gráfica para realizar os testes|
+|`Insomnia` | Interface gráfica para realizar os testes|
+|`cors` | permite a comunicação entre servidores diferentes|
 
 ## Arquitetura 
  ```
