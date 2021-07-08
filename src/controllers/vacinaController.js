@@ -31,7 +31,7 @@ const create = async (request, response)=>{
 
     try{
         const novoLocal = await local.save()
-        response.status(200).json([{
+        response.status(201).json([{
             message: "Local cadastrado com sucesso",
             novoLocal}])
     }catch(err){
@@ -52,8 +52,10 @@ const getAll = async(request, response)=>{
 
 const getBairro = async (request, response)=>{
     const encontraBairro = await Vacina.find(request.query)
-    response.send(200).json(encontraBairro)
-   
+    response.status(200).json([{
+        message:"Olá, esse é o local mais próximo a você",
+        encontraBairro
+    }])
 }
 
 
@@ -67,7 +69,7 @@ const deleteLocal = async (request, response)=>{
 
     try{
         await encontraLocal.remove()
-        response.status(200).json([{
+        response.status(204).json([{
             message: "Remoção realizada com sucesso",
             encontraLocal
         }])
